@@ -1,0 +1,61 @@
+import java.util.*;
+
+public class Card {
+	private enum Rank {
+		ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,J,Q,K
+	}
+	private enum Suit{
+		HEART,CLUP,FANGKUAI,HEITAO
+	}
+	private Rank rank;
+	private Suit suit;
+	private static List<Integer> list= new ArrayList<Integer>();
+	public static int total;
+	
+	public Card() {		
+		int seed;
+		
+			Random random = new Random();
+			do{
+				seed =random.nextInt(52);
+			}while(list.contains(seed));
+			System.out.println(seed);	
+			list.add(seed);
+			total +=1;
+
+			switch(seed%13){
+			case 0: {rank=Rank.ACE;break;}
+			case 1: {rank=Rank.TWO;break;}
+			case 2: {rank=Rank.THREE;break;}
+			case 3: {rank=Rank.FOUR;break;}
+			case 4: {rank=Rank.FIVE;break;}
+			case 5: {rank=Rank.SIX;break;}
+			case 6: {rank=Rank.SEVEN;break;}
+			case 7: {rank=Rank.EIGHT;break;}
+			case 8: {rank=Rank.NINE;break;}
+			case 9: {rank=Rank.TEN;break;}
+			case 10: {rank=Rank.J;break;}
+			case 11: {rank=Rank.Q;break;}
+			case 12: {rank=Rank.K;break;}
+			default:break;
+			}
+			switch(seed/13){
+			case 0: {suit=Suit.HEART;break;}
+			case 1: {suit=Suit.HEITAO;break;}
+			case 2: {suit=Suit.FANGKUAI;break;}
+			case 3: {suit=Suit.CLUP;break;}
+			default:break;
+				
+			};
+		
+	}
+	public Rank getRank(){
+		return rank;
+	}
+	public Suit getSuit(){
+		return suit;
+	}
+	public void printCard(){
+		System.out.println("The card is "+suit+" "+rank);
+	}
+}
